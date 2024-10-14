@@ -14,6 +14,7 @@ public class User implements Serializable{
 	private String id;
 	private String name;
 	private String email;
+	private User author;
 
 	public User() {
 	}
@@ -23,6 +24,7 @@ public class User implements Serializable{
 		this.id = id;
 		this.name = name;
 		this.email = email;
+		
 	}
 
 	public String getId() {
@@ -48,7 +50,7 @@ public class User implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -65,5 +67,7 @@ public class User implements Serializable{
 		User other = (User) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 
 }
