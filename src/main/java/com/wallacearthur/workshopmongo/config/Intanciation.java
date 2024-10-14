@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.wallacearthur.workshopmongo.domain.Post;
 import com.wallacearthur.workshopmongo.domain.User;
+import com.wallacearthur.workshopmongo.dto.AuthorDTO;
 import com.wallacearthur.workshopmongo.repository.PostRepository;
 import com.wallacearthur.workshopmongo.repository.UserRepository;
 
@@ -35,12 +36,12 @@ public class Intanciation implements CommandLineRunner{
 		User maria = new User(null, "Maria Brown", "maria@gmail.com");
 		User alex = new User(null, "Alex Green", "alex@gmail.com");
 		User bob = new User(null, "Bob Grey", "bob@gmail.com");
-		
-		
-		Post post1 = new Post(null,sdf.parse("21/03/2018") , "Partiu viagem!", "Vou viajar para sao paulo, abraços",maria);
-		Post post2 = new Post(null,sdf.parse("21/03/2018") , "Bom dia!", "Acordei feliz hoje", maria);
-		
 		userRepository.saveAll(Arrays.asList(maria,alex,bob));
+		
+		Post post1 = new Post(null,sdf.parse("21/03/2018") , "Partiu viagem!", "Vou viajar para sao paulo, abraços",new AuthorDTO(maria));
+		Post post2 = new Post(null,sdf.parse("21/03/2018") , "Bom dia!", "Acordei feliz hoje",new AuthorDTO (maria));
+		
+		
 		postRepository.saveAll(Arrays.asList(post1,post2));
 		
 		
